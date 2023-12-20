@@ -16,13 +16,20 @@ limitations under the License.
 
 #pragma once
 
-#include <iostream>
+#include "Core.h"
+#include "Logger.h"
 
-#include <Titan.h>
-
-class Game : public Titan::Application
+namespace Titan
 {
-public:
-	Game();
-	~Game();
-};
+	class TITAN_API Application
+	{
+	public:
+		Application();
+		virtual ~Application();
+
+		int Run();
+		Logger* logger = new Logger();
+	};
+
+	Application* CreateApplication();
+}

@@ -16,13 +16,32 @@ limitations under the License.
 
 #pragma once
 
-#include <iostream>
+#include <eventpp/eventqueue.h>
 
-#include <Titan.h>
+#include "Core.h"
 
-class Game : public Titan::Application
+namespace Titan
 {
-public:
-	Game();
-	~Game();
-};
+	class TITAN_API EventSystem
+	{
+	public:
+		enum EventType
+		{
+			Mouse,
+			Keyboard,
+			ChangedState
+		};
+
+		eventpp::EventQueue<std::string, void(std::string data)> queue;
+
+		eventpp::EventQueue<std::string, void(std::string data)> getQueue()
+		{
+			return queue;
+		}
+
+		void Update()
+		{
+			queue.process();
+		}
+	};
+}

@@ -16,13 +16,8 @@ limitations under the License.
 
 #pragma once
 
-#include <iostream>
+#include "Core/Application.h"
+#include "Core/Logger.h"
+#include "Core/EventBus.h"
 
-#include <Titan.h>
-
-class Game : public Titan::Application
-{
-public:
-	Game();
-	~Game();
-};
+#include "Core/Entrypoint.h"

@@ -14,15 +14,22 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-#pragma once
+#include "Logger.h"
 
-#include <iostream>
-
-#include <Titan.h>
-
-class Game : public Titan::Application
+namespace Titan
 {
-public:
-	Game();
-	~Game();
-};
+	std::shared_ptr<spdlog::logger> Logger::engineLogger;
+	std::shared_ptr<spdlog::logger> Logger::applicationLogger;
+
+	void Logger::Init()
+	{
+		spdlog::set_pattern("[%D][%T]%^ %n: %l: %v%$");
+
+		engineLogger = spdlog::stdout_color_mt("ENGINE");
+		engineLogger->set_level(spdlog::level::trace);
+
+		applicationLogger = spdlog::stdout_color_mt("APP");
+		applicationLogger->set_level(spdlog::level::trace);
+	}
+}
+

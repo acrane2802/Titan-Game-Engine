@@ -16,13 +16,8 @@ limitations under the License.
 
 #pragma once
 
-#include <iostream>
-
-#include <Titan.h>
-
-class Game : public Titan::Application
-{
-public:
-	Game();
-	~Game();
-};
+#ifdef TITAN_BUILD_DLL
+	#define TITAN_API __declspec(dllexport)
+#else
+	#define TITAN_API __declspec(dllimport)
+#endif

@@ -16,13 +16,32 @@ limitations under the License.
 
 #pragma once
 
-#include <iostream>
+#include <string>
 
-#include <Titan.h>
+#include <spdlog/spdlog.h>
+#include <spdlog/sinks/stdout_color_sinks.h>
 
-class Game : public Titan::Application
+#include "Core.h"
+
+namespace Titan
 {
-public:
-	Game();
-	~Game();
-};
+	class TITAN_API Logger
+	{
+	public:
+		void Init();
+
+		inline static std::shared_ptr<spdlog::logger>& GetEngineLogger()
+		{
+			return engineLogger;
+		}
+
+		inline static std::shared_ptr<spdlog::logger>& GetApplicationLogger()
+		{
+			return applicationLogger;
+		}
+
+	private:
+		static std::shared_ptr<spdlog::logger> engineLogger;
+		static std::shared_ptr<spdlog::logger> applicationLogger;
+	};
+}

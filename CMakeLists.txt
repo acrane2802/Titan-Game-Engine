@@ -9,3 +9,6 @@ project ("Titan Game Engine")
 
 add_subdirectory ("Engine")
 add_subdirectory ("Game")
+
+add_subdirectory("3rdparty/spdlog")
+add_subdirectory("3rdparty/eventpp")

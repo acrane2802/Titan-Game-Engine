@@ -16,13 +16,12 @@ limitations under the License.
 
 #pragma once
 
-#include <iostream>
+extern Titan::Application* Titan::CreateApplication();
 
-#include <Titan.h>
-
-class Game : public Titan::Application
+int main()
 {
-public:
-	Game();
-	~Game();
-};
+	auto app = Titan::CreateApplication();
+	app->Run();
+	delete app;
+	return 0;
+}

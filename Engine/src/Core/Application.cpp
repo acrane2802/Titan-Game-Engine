@@ -14,15 +14,24 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-#pragma once
+#include "Application.h"
 
-#include <iostream>
-
-#include <Titan.h>
-
-class Game : public Titan::Application
+namespace Titan
 {
-public:
-	Game();
-	~Game();
-};
+	Application::Application()
+	{
+	}
+
+	Application::~Application()
+	{
+	}
+
+	int Application::Run()
+	{
+		logger->Init();
+
+		while (true);
+		return 0;
+	}
+}
+
